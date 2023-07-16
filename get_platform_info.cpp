@@ -1,7 +1,7 @@
 #include<iostream>
 #include<string.h>
 
-#ifdef MAC
+#ifdef __APPLE__
 #include<OpenCL/cl.h>
 #else
 #include<CL/cl.h>

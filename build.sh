@@ -1,12 +1,21 @@
 #!/bin/bash
 
-echo "============================Building $1====================================="
-g++ $1 -lOpenCL -o a.out
+file=$1
+machine=$2
+
+echo "============================Building $file====================================="
+if [ $machine == 'mac' ]
+then
+    g++ $file -framework OpenCL -o a.out
+else
+    g++ $file -lOpenCL -o a.out
+fi
+
 if [ $? != 0 ]
 then
     echo '!!!!!!Failed!!!!!!!!'
     exit;
 else
-echo "=============================Running $1====================================="
+echo "=============================Running $file====================================="
 ./a.out
 fi
